@@ -1,5 +1,4 @@
 /**
- *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -7,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -60,22 +59,57 @@ public class TestRailNotifier extends Notifier {
         this.createNewTestcases = createNewTestcases;
     }
 
-    public void setTestrailProject(int project) { this.testrailProject = project;}
-    public int getTestrailProject() { return this.testrailProject; }
-    public void setTestrailSuite(int suite) { this.testrailSuite = suite; }
-    public int getTestrailSuite() { return this.testrailSuite; }
-    public void setJunitResultsGlob(String glob) { this.junitResultsGlob = glob; }
-    public String getJunitResultsGlob() { return this.junitResultsGlob; }
-    public String getTestrailMilestone() { return this.testrailMilestone; }
-    public void setTestrailMilestone(String milestone) { this.testrailMilestone = milestone; }
-    public void setEnableMilestone(boolean mstone) {this.enableMilestone = mstone; }
-    public boolean getEnableMilestone() { return  this.enableMilestone; }
-    public void setCreateNewTestcases(boolean newcases) {this.createNewTestcases = newcases; }
-    public boolean getCreateNewTestcases() { return  this.createNewTestcases; }
+    public void setTestrailProject(int project) {
+        this.testrailProject = project;
+    }
+
+    public int getTestrailProject() {
+        return this.testrailProject;
+    }
+
+    public void setTestrailSuite(int suite) {
+        this.testrailSuite = suite;
+    }
+
+    public int getTestrailSuite() {
+        return this.testrailSuite;
+    }
+
+    public void setJunitResultsGlob(String glob) {
+        this.junitResultsGlob = glob;
+    }
+
+    public String getJunitResultsGlob() {
+        return this.junitResultsGlob;
+    }
+
+    public String getTestrailMilestone() {
+        return this.testrailMilestone;
+    }
+
+    public void setTestrailMilestone(String milestone) {
+        this.testrailMilestone = milestone;
+    }
+
+    public void setEnableMilestone(boolean mstone) {
+        this.enableMilestone = mstone;
+    }
+
+    public boolean getEnableMilestone() {
+        return this.enableMilestone;
+    }
+
+    public void setCreateNewTestcases(boolean newcases) {
+        this.createNewTestcases = newcases;
+    }
+
+    public boolean getCreateNewTestcases() {
+        return this.createNewTestcases;
+    }
 
     @Override
     public boolean perform(AbstractBuild build, Launcher launcher, BuildListener listener) throws IOException, InterruptedException {
-        TestRailClient  testrail = getDescriptor().getTestrailInstance();
+        TestRailClient testrail = getDescriptor().getTestrailInstance();
         testrail.setHost(getDescriptor().getTestrailHost());
         testrail.setUser(getDescriptor().getTestrailUser());
         testrail.setPassword(getDescriptor().getTestrailPassword());
@@ -129,8 +163,8 @@ public class TestRailNotifier extends Notifier {
         }
         List<Testsuite> suites = actualJunitResults.getSuites();
         try {
-            for (Testsuite suite: suites) {
-                results.merge(addSuite(suite, null, testCases));
+            for (Testsuite suite : suites) {
+                //results.merge(addSuite(suite, null, testCases));
             }
         } catch (Exception e) {
             listener.getLogger().println("Failed to create missing Test Suites in TestRail.");
@@ -208,23 +242,23 @@ public class TestRailNotifier extends Notifier {
                     }
                 }
                 if (addResult) {
-	                CaseStatus caseStatus;
-	                Float caseTime = testcase.getTime();
-	                String caseComment = null;
-	                Failure caseFailure = testcase.getFailure();
-	                if (caseFailure != null) {
-	                    caseStatus = CaseStatus.FAILED;
-	                    caseComment = (caseFailure.getMessage() == null) ? caseFailure.getText() : caseFailure.getMessage() + "\n" + caseFailure.getText();
-	                } else if (testcase.getSkipped() != null) {
-	                    caseStatus = CaseStatus.UNTESTED;
-	                } else {
-	                    caseStatus = CaseStatus.PASSED;
-	                }
+                    CaseStatus caseStatus;
+                    Float caseTime = testcase.getTime();
+                    String caseComment = null;
+                    Failure caseFailure = testcase.getFailure();
+                    if (caseFailure != null) {
+                        caseStatus = CaseStatus.FAILED;
+                        caseComment = (caseFailure.getMessage() == null) ? caseFailure.getText() : caseFailure.getMessage() + "\n" + caseFailure.getText();
+                    } else if (testcase.getSkipped() != null) {
+                        caseStatus = CaseStatus.UNTESTED;
+                    } else {
+                        caseStatus = CaseStatus.PASSED;
+                    }
 
-	                if (caseStatus != CaseStatus.UNTESTED){
-	                    results.addResult(new Result(caseId, caseStatus, caseComment, caseTime));
-	                }
-	            }
+                    if (caseStatus != CaseStatus.UNTESTED) {
+                        results.addResult(new Result(caseId, caseStatus, caseComment, caseTime));
+                    }
+                }
             }
         }
 
@@ -236,7 +270,7 @@ public class TestRailNotifier extends Notifier {
     // you don't have to do this.
     @Override
     public DescriptorImpl getDescriptor() {
-        return (DescriptorImpl)super.getDescriptor();
+        return (DescriptorImpl) super.getDescriptor();
     }
 
     public BuildStepMonitor getRequiredMonitorService() {
@@ -353,7 +387,7 @@ public class TestRailNotifier extends Notifier {
                 testrail.setHost(testrailHost);
                 testrail.setUser(value);
                 testrail.setPassword(testrailPassword);
-                if (testrail.serverReachable() && !testrail.authenticationWorks()){
+                if (testrail.serverReachable() && !testrail.authenticationWorks()) {
                     return FormValidation.error("Invalid user/password combination.");
                 }
             }
@@ -371,7 +405,7 @@ public class TestRailNotifier extends Notifier {
                 testrail.setHost(testrailHost);
                 testrail.setUser(testrailUser);
                 testrail.setPassword(value);
-                if (testrail.serverReachable() && !testrail.authenticationWorks()){
+                if (testrail.serverReachable() && !testrail.authenticationWorks()) {
                     return FormValidation.error("Invalid user/password combination.");
                 }
             }
@@ -415,16 +449,39 @@ public class TestRailNotifier extends Notifier {
             // ^Can also use req.bindJSON(this, formData);
             //  (easier when there are many fields; need set* methods for this, like setTestrailHost)
             save();
-            return super.configure(req,formData);
+            return super.configure(req, formData);
         }
 
-        public void setTestrailHost(String host) { this.testrailHost = host; }
-        public String getTestrailHost() { return testrailHost; }
-        public void setTestrailUser(String user) { this.testrailUser = user; }
-        public String getTestrailUser() { return testrailUser; }
-        public void setTestrailPassword(String password) { this.testrailPassword = password; }
-        public String getTestrailPassword() { return testrailPassword; }
-        public void setTestrailInstance(TestRailClient trc) { testrail = trc; }
-        public TestRailClient getTestrailInstance() { return testrail; }
+        public void setTestrailHost(String host) {
+            this.testrailHost = host;
+        }
+
+        public String getTestrailHost() {
+            return testrailHost;
+        }
+
+        public void setTestrailUser(String user) {
+            this.testrailUser = user;
+        }
+
+        public String getTestrailUser() {
+            return testrailUser;
+        }
+
+        public void setTestrailPassword(String password) {
+            this.testrailPassword = password;
+        }
+
+        public String getTestrailPassword() {
+            return testrailPassword;
+        }
+
+        public void setTestrailInstance(TestRailClient trc) {
+            testrail = trc;
+        }
+
+        public TestRailClient getTestrailInstance() {
+            return testrail;
+        }
     }
 }

@@ -10,13 +10,25 @@
   <f:entry title="Suite" field="testrailSuite">
     <f:select />
   </f:entry>
+  <f:entry title="Test Run" field="testrailRun">
+    <f:textbox />
+  </f:entry>
   <f:entry title="Test Report XMLs" field="junitResultsGlob">
     <f:textbox />
   </f:entry>
+
+  <f:section title="Advanced Options">
+    <f:advanced>
+          <f:entry title="Delimiting character" field="syncByNameDelimiter">
+            <f:textbox value="__"/>
+          </f:entry>
+    </f:advanced>
+  </f:section>
+
+  <!--
   <f:entry title="Create new testcases" field="createNewTestcases">
     <f:checkbox/>
   </f:entry>
-
   <f:block>
        <table>
          <f:optionalBlock name="enableMilestone" title="Use milestone" inline="true" checked="${instance.enableMilestone}">
@@ -26,4 +38,5 @@
          </f:optionalBlock>
        </table>
   </f:block>
+  -->
 </j:jelly>

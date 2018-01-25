@@ -30,6 +30,7 @@ public class Testcase {
     private Skipped skipped;
     private Float time;
     private String refs;
+    private Integer id;
 
     @XmlAttribute
     public void setName(String name) { this.name = name.trim(); }
@@ -41,10 +42,13 @@ public class Testcase {
     public void setTime(Float time) { this.time = time; }
     @XmlAttribute(name = "refs")
     public void setRefs(String refs) { this.refs = refs; }
+    @XmlAttribute(name = "testcaseid")
+    public void setId(Integer id) { this.id = id; }
 
     public String getName() { return this.name; }
     public Failure getFailure() { return this.failure; }
     public Skipped getSkipped() { return this.skipped; }
     public Float getTime() { return this.time; }
     public String getRefs() { return this.refs; }
+    public Integer getId() { return this.id; }
 }
