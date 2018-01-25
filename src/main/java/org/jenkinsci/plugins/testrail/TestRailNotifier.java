@@ -28,6 +28,7 @@ import hudson.util.ListBoxModel;
 import hudson.tasks.*;
 import hudson.util.FormValidation;
 import net.sf.json.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.jenkinsci.plugins.testrail.JunitResults.*;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
@@ -45,18 +46,20 @@ public class TestRailNotifier extends Notifier {
     private int testrailSuite;
     private String junitResultsGlob;
     private String testrailMilestone;
+    private String syncByNameDelimiter;
     private boolean enableMilestone;
     private boolean createNewTestcases;
 
     // Fields in config.jelly must match the parameter names in the "DataBoundConstructor"
     @DataBoundConstructor
-    public TestRailNotifier(int testrailProject, int testrailSuite, String junitResultsGlob, String testrailMilestone, boolean enableMilestone, boolean createNewTestcases) {
+    public TestRailNotifier(int testrailProject, int testrailSuite, String junitResultsGlob, String testrailMilestone, boolean enableMilestone, boolean createNewTestcase, String syncByNameDelimiter) {
         this.testrailProject = testrailProject;
         this.testrailSuite = testrailSuite;
         this.junitResultsGlob = junitResultsGlob;
         this.testrailMilestone = testrailMilestone;
         this.enableMilestone = enableMilestone;
         this.createNewTestcases = createNewTestcases;
+        this.setSyncByNameDelimiter(syncByNameDelimiter);
     }
 
     public void setTestrailProject(int project) {
@@ -107,6 +110,18 @@ public class TestRailNotifier extends Notifier {
         return this.createNewTestcases;
     }
 
+    public String getSyncByNameDelimiter() {
+        return syncByNameDelimiter;
+    }
+
+    public void setSyncByNameDelimiter(String syncByNameDelimiter) {
+        this.syncByNameDelimiter = syncByNameDelimiter;
+    }
+
+    public boolean hasDelimitingCharacter() {
+        return StringUtils.isNotEmpty(getSyncByNameDelimiter());
+    }
+
     @Override
     public boolean perform(AbstractBuild build, Launcher launcher, BuildListener listener) throws IOException, InterruptedException {
         TestRailClient testrail = getDescriptor().getTestrailInstance();
@@ -114,17 +129,22 @@ public class TestRailNotifier extends Notifier {
         testrail.setUser(getDescriptor().getTestrailUser());
         testrail.setPassword(getDescriptor().getTestrailPassword());
 
-        ExistingTestCases testCases = null;
+        ExistingTestCases testrailTestCases = null;
+        String[] caseNames = null;
+        Results results = new Results();
+        JUnitResults actualJunitResults = null;
+        List<Testsuite> suites = null;
+
+
         try {
-            testCases = new ExistingTestCases(testrail, this.testrailProject, this.testrailSuite);
+            testrailTestCases = new ExistingTestCases(testrail, this.testrailProject, this.testrailSuite);
         } catch (ElementNotFoundException e) {
             listener.getLogger().println("Cannot find project or suite on TestRail server. Please check your Jenkins job and system configurations.");
             return false;
         }
 
-        String[] caseNames = null;
         try {
-            caseNames = testCases.listTestCases();
+            caseNames = testrailTestCases.listTestCases();
             listener.getLogger().println("Test Cases: ");
             for (int i = 0; i < caseNames.length; i++) {
                 listener.getLogger().println("  " + caseNames[i]);
@@ -135,7 +155,6 @@ public class TestRailNotifier extends Notifier {
         }
 
         listener.getLogger().println("Munging test result files.");
-        Results results = new Results();
 
         // FilePath doesn't have a read method. We want to actually process the files on the master
         // because during processing we talk to TestRail and slaves might not be able to.
@@ -146,25 +165,26 @@ public class TestRailNotifier extends Notifier {
         // process the temp files.
         // it looks like the destructor deletes the temp dir when we're finished
         FilePath tempdir = new FilePath(Util.createTempDir());
-        // This picks up *all* result files so if you have old results in the same directory we'll see those, too.
-        FilePath ws = build.getWorkspace();
+
         try {
-            ws.copyRecursiveTo(junitResultsGlob, "", tempdir);
+            build.getWorkspace().copyRecursiveTo(junitResultsGlob, "", tempdir);
         } catch (Exception e) {
             listener.getLogger().println("Error trying to copy files to Jenkins master: " + e.getMessage());
             return false;
         }
-        JUnitResults actualJunitResults = null;
         try {
             actualJunitResults = new JUnitResults(tempdir, this.junitResultsGlob, listener.getLogger());
         } catch (JAXBException e) {
             listener.getLogger().println(e.getMessage());
             return false;
         }
-        List<Testsuite> suites = actualJunitResults.getSuites();
+
+
+        suites = actualJunitResults.getSuites();
         try {
             for (Testsuite suite : suites) {
-                //results.merge(addSuite(suite, null, testCases));
+                Results suiteResult = addSuite(suite, null, testrailTestCases);
+                results.merge(suiteResult);
             }
         } catch (Exception e) {
             listener.getLogger().println("Failed to create missing Test Suites in TestRail.");
@@ -178,7 +198,7 @@ public class TestRailNotifier extends Notifier {
         int runId = -1;
         TestRailResponse response;
         try {
-            runId = testrail.addRun(testCases.getProjectId(), testCases.getSuiteId(), milestoneId, runComment);
+            runId = testrail.addRun(testrailTestCases.getProjectId(), testrailTestCases.getSuiteId(), milestoneId, runComment);
             response = testrail.addResultsForCases(runId, results);
         } catch (TestRailException e) {
             listener.getLogger().println("Error pushing results to TestRail");
@@ -228,12 +248,24 @@ public class TestRailNotifier extends Notifier {
             }
         }
 
+        parseTestSuite(suite, existingCases, sectionId, results);
+
+        return results;
+    }
+
+    private void parseTestSuite(Testsuite suite, ExistingTestCases existingCases, int sectionId, Results results) throws IOException, TestRailException {
         if (suite.hasCases()) {
             for (Testcase testcase : suite.getCases()) {
                 int caseId = 0;
                 boolean addResult = false;
+
                 try {
-                    caseId = existingCases.getCaseId(suite.getName(), testcase.getName());
+                    if (testcase.hasIdAppended(this.syncByNameDelimiter)){
+                        testcase.setId(testcase.parseId(this.syncByNameDelimiter));
+                        caseId = testcase.getId();
+                    } else {
+                        caseId = existingCases.getCaseId(suite.getName(), testcase.getName());
+                    }
                     addResult = true;
                 } catch (ElementNotFoundException e) {
                     if (this.createNewTestcases) {
@@ -241,6 +273,7 @@ public class TestRailNotifier extends Notifier {
                         addResult = true;
                     }
                 }
+
                 if (addResult) {
                     CaseStatus caseStatus;
                     Float caseTime = testcase.getTime();
@@ -261,8 +294,6 @@ public class TestRailNotifier extends Notifier {
                 }
             }
         }
-
-        return results;
     }
 
     // Overridden for better type safety.

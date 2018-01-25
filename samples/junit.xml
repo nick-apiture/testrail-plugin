@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+ <testsuite name="Customer Service: " timestamp="2018-01-16T15:12:09" hostname="localhost" time="40.195" errors="0" tests="1" skipped="0" disabled="0" failures="7">
+  <testcase classname="Customer Service: " name="a-1__1454246" time="0.281">
+   <failure type="toEqual" message="Expected undefined to equal &apos;Darrell Mason&apos;."><![CDATA[Error: Expected undefined to equal 'Darrell Mason'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:65:43)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;darrellmason37876@liveoakbankqa.com&apos;."><![CDATA[Error: Expected undefined to equal 'darrellmason37876@liveoakbankqa.com'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:66:47)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;Mason&apos;."><![CDATA[Error: Expected undefined to equal 'Mason'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:68:47)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;Darrell&apos;."><![CDATA[Error: Expected undefined to equal 'Darrell'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:69:48)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;darrellmason37876@liveoakbankqa.com&apos;."><![CDATA[Error: Expected undefined to equal 'darrellmason37876@liveoakbankqa.com'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:70:44)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;003f400000DvNwoAAF&apos;."><![CDATA[Error: Expected undefined to equal '003f400000DvNwoAAF'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:71:48)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;001f400000EcVmoAAF&apos;."><![CDATA[Error: Expected undefined to equal '001f400000EcVmoAAF'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:72:48)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+  </testcase>
+  <testcase classname="Customer Service: " name="a-2__1454247" time="0.281">
+   <failure type="toEqual" message="Expected undefined to equal &apos;Darrell Mason&apos;."><![CDATA[Error: Expected undefined to equal 'Darrell Mason'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:65:43)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;darrellmason37876@liveoakbankqa.com&apos;."><![CDATA[Error: Expected undefined to equal 'darrellmason37876@liveoakbankqa.com'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:66:47)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;Mason&apos;."><![CDATA[Error: Expected undefined to equal 'Mason'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:68:47)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;Darrell&apos;."><![CDATA[Error: Expected undefined to equal 'Darrell'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:69:48)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;darrellmason37876@liveoakbankqa.com&apos;."><![CDATA[Error: Expected undefined to equal 'darrellmason37876@liveoakbankqa.com'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:70:44)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;003f400000DvNwoAAF&apos;."><![CDATA[Error: Expected undefined to equal '003f400000DvNwoAAF'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:71:48)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+   <failure type="toEqual" message="Expected undefined to equal &apos;001f400000EcVmoAAF&apos;."><![CDATA[Error: Expected undefined to equal '001f400000EcVmoAAF'.
+    at stack (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2155:17)
+    at buildExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2125:14)
+    at Spec.expectationResultFactory (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:766:18)
+    at Spec.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:444:34)
+    at Expectation.addExpectationResult (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:710:21)
+    at Expectation.toEqual (/Users/nick.fields/Source/API/node_modules/jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js:2078:12)
+    at request.promise.then.response_details (/Users/nick.fields/Source/API/specs/deposits/customer_service_spec.js:72:48)
+    at tryCatcher (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/util.js:16:23)
+    at Promise._settlePromiseFromHandler (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:512:31)
+    at Promise._settlePromise (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:569:18)
+    at Promise._settlePromise0 (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:614:10)
+    at Promise._settlePromises (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/promise.js:693:18)
+    at Async._drainQueue (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:133:16)
+    at Async._drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:143:10)
+    at Immediate.Async.drainQueues (/Users/nick.fields/Source/API/node_modules/bluebird/js/release/async.js:17:14)
+    at runCallback (timers.js:789:20)]]>
+   </failure>
+  </testcase>
+ </testsuite>
+</testsuites>

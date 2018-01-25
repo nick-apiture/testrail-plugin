@@ -22,6 +22,9 @@
           <f:entry title="Delimiting character" field="syncByNameDelimiter">
             <f:textbox value="__"/>
           </f:entry>
+          <f:entry title="Create new testcases" field="createNewTestcases">
+              <f:checkbox/>
+          </f:entry>
     </f:advanced>
   </f:section>
 

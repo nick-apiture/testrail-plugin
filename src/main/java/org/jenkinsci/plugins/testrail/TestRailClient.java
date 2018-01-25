@@ -1,5 +1,4 @@
 /**
- *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -7,9 +6,9 @@
  * to you under the Apache License, Version 2.0 (the
  * "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,8 +37,11 @@ import javax.xml.ws.http.HTTPException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.lang.InterruptedException;
+import java.util.ArrayList;
 import java.util.List;
+
 import static org.jenkinsci.plugins.testrail.Utils.*;
+
 /**
  * Created by Drew on 3/19/14.
  */
@@ -48,12 +50,29 @@ public class TestRailClient {
     private String user;
     private String password;
 
-    public void setHost(String host) { this.host = host; }
-    public void setUser(String user) { this.user = user; }
-    public void setPassword(String password) {this.password = password; }
-    public String getHost() { return this.host; }
-    public String getUser() { return this.user; }
-    public String getPassword() { return this.password; }
+    public void setHost(String host) {
+        this.host = host;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getHost() {
+        return this.host;
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
 
     public TestRailClient(String host, String user, String password) {
         this.host = host;
@@ -85,9 +104,9 @@ public class TestRailClient {
                     log(e.toString());
                 }
             }
-       } while (response.getStatus() == 429);
+        } while (response.getStatus() == 429);
 
-       return response;
+        return response;
     }
 
     private TestRailResponse httpGetInt(String path) throws IOException {
@@ -107,7 +126,7 @@ public class TestRailClient {
     }
 
     private TestRailResponse httpPost(String path, String payload)
-        throws UnsupportedEncodingException, IOException, HTTPException, TestRailException {
+            throws UnsupportedEncodingException, IOException, HTTPException, TestRailException {
         TestRailResponse response;
 
         do {
@@ -187,7 +206,7 @@ public class TestRailClient {
 
     public int getProjectId(String projectName) throws IOException, ElementNotFoundException {
         Project[] projects = getProjects();
-        for(int i = 0; i < projects.length; i++) {
+        for (int i = 0; i < projects.length; i++) {
             if (projects[i].getName().equals(projectName)) {
                 return projects[i].getId();
             }
@@ -255,6 +274,7 @@ public class TestRailClient {
 
         return sects;
     }
+
     private Section createSectionFromJSON(JSONObject o) {
         Section s = new Section();
 
@@ -272,11 +292,11 @@ public class TestRailClient {
         return s;
     }
 
-    public Section addSection(String sectionName, int projectId, int suiteId, String parentId) 
+    public Section addSection(String sectionName, int projectId, int suiteId, String parentId)
             throws IOException, ElementNotFoundException, TestRailException {
         //Section section = new Section();
         String payload = new JSONObject().put("name", sectionName).put("suite_id", suiteId).put("parent_id", parentId).toString();
-        String body = httpPost("index.php?/api/v2/add_section/" + projectId , payload).getBody();
+        String body = httpPost("index.php?/api/v2/add_section/" + projectId, payload).getBody();
         JSONObject o = new JSONObject(body);
 
         return createSectionFromJSON(o);
@@ -284,7 +304,7 @@ public class TestRailClient {
 
     private Case createCaseFromJson(JSONObject o) {
         Case s = new Case();
-        
+
         s.setTitle(o.getString("title"));
         s.setId(o.getInt("id"));
         s.setSectionId(o.getInt("section_id"));
@@ -293,7 +313,7 @@ public class TestRailClient {
         return s;
     }
 
-    public Case addCase(Testcase caseToAdd, int sectionId) 
+    public Case addCase(Testcase caseToAdd, int sectionId)
             throws IOException, TestRailException {
         JSONObject payload = new JSONObject().put("title", caseToAdd.getName());
         if (!StringUtils.isEmpty(caseToAdd.getRefs())) {
@@ -305,15 +325,19 @@ public class TestRailClient {
         return c;
     }
 
-    public TestRailResponse addResultsForCases(int runId, Results results) 
-            throws IOException, TestRailException {
+    public TestRailResponse addResultsForCases(int runId, Results results) throws IOException, TestRailException {
         JSONArray a = new JSONArray();
+        List<Integer> testIds = new ArrayList();
+
         for (int i = 0; i < results.getResults().size(); i++) {
             JSONObject o = new JSONObject();
             Result r = results.getResults().get(i);
             o.put("case_id", r.getCaseId()).put("status_id", r.getStatus().getValue()).put("comment", r.getComment()).put("elapsed", r.getElapsedTimeString());
             a.put(o);
+            testIds.add(r.getCaseId());
         }
+        TestRailResponse addTestsRespose = addTestCaseIdsToRun(runId, testIds);
+        if (addTestsRespose.getStatus() != 200) throw new TestRailException("An error occurred while adding tests to the test run.");
 
         String payload = new JSONObject().put("results", a).toString();
         log(payload);
@@ -321,9 +345,22 @@ public class TestRailClient {
         return response;
     }
 
+    private TestRailResponse addTestCaseIdsToRun(int runId, List<Integer> testIds) throws IOException, TestRailException {
+        String payload = new JSONObject().put("case_ids", testIds).toString();
+        log(payload);
+        TestRailResponse response = httpPost("index.php?/api/v2/update_run/" + runId, payload);
+        return response;
+    }
+
     public int addRun(int projectId, int suiteId, String milestoneID, String description)
             throws IOException, TestRailException {
-        String payload = new JSONObject().put("suite_id", suiteId).put("description", description).put("milestone_id", milestoneID).toString();
+        JSONObject json = new JSONObject();
+        json.put("suite_id", suiteId);
+        json.put("description", description);
+        json.put("milestone_id", milestoneID);
+        json.put("include_all", false);
+
+        String payload = json.toString();
         String body = httpPost("index.php?/api/v2/add_run/" + projectId, payload).getBody();
         return new JSONObject(body).getInt("id");
     }
@@ -332,7 +369,7 @@ public class TestRailClient {
         String body = httpGet("index.php?/api/v2/get_milestones/" + projectId).getBody();
         JSONArray json;
         try {
-          json = new JSONArray(body);
+            json = new JSONArray(body);
         } catch (JSONException e) {
             return new Milestone[0];
         }
@@ -348,12 +385,12 @@ public class TestRailClient {
     }
 
     public String getMilestoneID(String milesoneName, int projectId) throws IOException, ElementNotFoundException {
-      for (Milestone mstone: getMilestones(projectId)) {
-         if (mstone.getName().equals(milesoneName)) {
-             return mstone.getId();
-         }
-      }
-      throw new ElementNotFoundException("Milestone id not found.");
+        for (Milestone mstone : getMilestones(projectId)) {
+            if (mstone.getName().equals(milesoneName)) {
+                return mstone.getId();
+            }
+        }
+        throw new ElementNotFoundException("Milestone id not found.");
     }
 
     public boolean closeRun(int runId)

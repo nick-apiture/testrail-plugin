@@ -18,6 +18,9 @@
  */
 package org.jenkinsci.plugins.testrail.JunitResults;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
+
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -42,7 +45,6 @@ public class Testcase {
     public void setTime(Float time) { this.time = time; }
     @XmlAttribute(name = "refs")
     public void setRefs(String refs) { this.refs = refs; }
-    @XmlAttribute(name = "testcaseid")
     public void setId(Integer id) { this.id = id; }
 
     public String getName() { return this.name; }
@@ -51,4 +53,17 @@ public class Testcase {
     public Float getTime() { return this.time; }
     public String getRefs() { return this.refs; }
     public Integer getId() { return this.id; }
+
+    public boolean hasIdAppended(String delimiter) {
+        if (StringUtils.isNotEmpty(delimiter)) {
+            String[] parts = getName().split(delimiter);
+            return parts.length == 1 ? false : NumberUtils.isNumber(parts[1]);
+        } else {
+            return false;
+        }
+    }
+
+    public Integer parseId(String delimiter) {
+        return Integer.parseInt(getName().split(delimiter)[1]);
+    }
 }
